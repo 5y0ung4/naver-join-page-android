@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NaverApp">
         <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".ProfileActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

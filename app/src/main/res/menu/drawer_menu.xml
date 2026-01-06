@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#F5F6F7">
+    <item
+        android:id="@+id/menu_home"
+        android:title="홈"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/menu_setting"
+        android:title="설정"
+        android:icon="@drawable/setting"/>
+</menu>

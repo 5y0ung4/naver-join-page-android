@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bgNaver">#F5F6F7</color>
+    <color name="mainNaver">#4CD26A</color>
 </resources>
