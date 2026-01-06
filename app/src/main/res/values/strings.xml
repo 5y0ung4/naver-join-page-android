@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">NaverApp</string>
+    <string name="searchBar">검색어 또는 URL 입력</string>
+    <string name="menu">MENU</string>
+    <string name="naver">naver</string>
+    <string name="availablepassword">abcdefghijklmnopqrstuvwxyz0123456789*_^!@#</string>
+    <string name="availableemail">abcdefghijklmnopqrstuvwxyz0123456789</string>
 
 </resources>

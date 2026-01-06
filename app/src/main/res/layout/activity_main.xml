@@ -14,9 +14,6 @@
         android:layout_width="315dp"
         android:layout_height="95dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo"
         android:layout_gravity="center"/>
 
@@ -75,11 +72,11 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/errorID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요."
+                    android:text="아이디는 5-20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다."
                     android:textColor="#ff0000"
                     android:textSize="12sp"
                     android:visibility="visible" />
@@ -118,30 +115,42 @@
 
                     <EditText
                         android:id="@+id/password"
-                        android:layout_width="310dp"
+                        android:layout_width="280dp"
                         android:layout_height="48dp"
+                        android:layout_marginEnd="10dp"
                         android:backgroundTint="#ffffff"
                         android:inputType="textPassword"
                         android:padding="5dp"
                         android:textSize="14sp" />
 
+                    <TextView
+                        android:id="@+id/pwNotAvail"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginEnd="0dp"
+                        android:text="사용불가"
+                        android:textColor="#ff0000"
+                        android:textSize="8sp"
+                        android:visibility="invisible" />
+
                     <ImageView
-                        android:id="@+id/textViewPW"
+                        android:id="@+id/lockPW"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="15dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/lock" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/errorPW"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요."
+                    android:text="8~16자 영문 대/소문자, 숫자, 특수문자를 사용하세요."
                     android:textColor="#ff0000"
                     android:textSize="12sp"
                     android:visibility="visible" />
@@ -179,26 +188,38 @@
 
                     <EditText
                         android:id="@+id/passwordCheck"
-                        android:layout_width="310dp"
+                        android:layout_width="280dp"
                         android:layout_height="48dp"
+                        android:layout_marginEnd="10dp"
                         android:backgroundTint="#ffffff"
                         android:inputType="textPassword"
                         android:padding="5dp"
                         android:textSize="14sp" />
 
+                    <TextView
+                        android:id="@+id/pwcNotAvail"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginEnd="0dp"
+                        android:text="사용불가"
+                        android:textColor="#ff0000"
+                        android:textSize="8sp"
+                        android:visibility="invisible" />
+
                     <ImageView
-                        android:id="@+id/textViewPWC"
+                        android:id="@+id/lockPWC"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="14dp"
-                        android:scaleType="centerCrop"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="15dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/lock" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView3C"
+                    android:id="@+id/errorPWcheck"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -251,7 +272,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/errorName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -262,6 +283,7 @@
 
             </LinearLayout>
 
+<!--            생년월일-->
             <LinearLayout
                 android:id="@+id/LLBIRTH"
                 android:layout_width="match_parent"
@@ -328,12 +350,25 @@
                             android:padding="5dp"
                             android:textSize="14sp" />
                     </TableRow>
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/errorBirth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="올바른 날짜를 작성해 주세요."
+                            android:textColor="#ff0000"
+                            android:textSize="12sp"
+                            android:visibility="gone" />
+
+                    </TableRow>
 
 
                 </TableLayout>
 
             </LinearLayout>
 
+<!--            성별-->
             <LinearLayout
                 android:id="@+id/LLSX"
                 android:layout_width="wrap_content"
@@ -364,6 +399,7 @@
                         android:padding="5dp"
                         android:background="@drawable/spinner_border"
                         android:spinnerMode="dropdown" />
+
 
                 </LinearLayout>
 
@@ -408,11 +444,11 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/errorEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="이름은 10자 이하만 작성할 수 있습니다."
+                    android:text="이메일 형식으로 작성해 주세요."
                     android:textColor="#ff0000"
                     android:textSize="12sp"
                     android:visibility="gone" />
@@ -456,7 +492,8 @@
                         android:hint="전화번호 입력"
                         android:inputType="number"
                         android:padding="5dp"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:maxLength="11"/>
 
                 </LinearLayout>
 

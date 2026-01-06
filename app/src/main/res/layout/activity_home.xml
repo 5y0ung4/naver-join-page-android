@@ -4,44 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    tools:content=".HomeActivity">
+    android:background="#ffffff">
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:background="@drawable/search_border"
-        android:hint="검색어 또는 URL 입력"
+        android:hint="@string/searchBar"
+        android:inputType="text"
         android:padding="20dp"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:layout_width="285dp"
         android:layout_height="95dp"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="248dp"
+        android:contentDescription="@string/naver"
         android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="34dp"
+        android:id="@+id/hamburger"
+        android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/menu"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hamburger" />
+
+    <ImageButton
+        android:id="@+id/qrcode"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/qrcode" />
 </androidx.constraintlayout.widget.ConstraintLayout>
