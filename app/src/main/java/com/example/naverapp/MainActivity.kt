@@ -2,6 +2,7 @@ package com.example.naverapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -11,11 +12,17 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.toColorInt
+import androidx.lifecycle.lifecycleScope
 import com.example.naverapp.customTextWatcher.bithDayWatcher
 import com.example.naverapp.customTextWatcher.idWatcher
 import com.example.naverapp.customTextWatcher.nameWatcher
 import com.example.naverapp.customTextWatcher.pwWatcher
 import com.example.naverapp.customTextWatcher.pwcWatcher
+import com.example.naverapp.model.UserRequest
+import com.example.naverapp.model.UserResponse
+import com.example.naverapp.network.ApiService
+import com.example.naverapp.network.RetrofitClient
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var birthMonth : Spinner; lateinit var sex : Spinner
@@ -34,9 +41,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var userId : EditText; lateinit var password : EditText
     lateinit var passwordCheck : EditText; lateinit var username : EditText
     lateinit var birthYear : EditText; lateinit var birthDay : EditText
-    lateinit var email : EditText
+    lateinit var email : EditText; lateinit var phone : EditText
 
-
+    val apiService = RetrofitClient.instance
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -53,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         birthDay = findViewById<EditText>(R.id.day)
         email = findViewById<EditText>(R.id.email)
         username = findViewById<EditText>(R.id.name)
+        phone = findViewById<EditText>(R.id.phone)
 
         //error image initiate
         lockpw = findViewById<ImageView>(R.id.lockPW)
@@ -118,10 +126,44 @@ class MainActivity : AppCompatActivity() {
         sexadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         sex.adapter = sexadapter
 
-        signup.setOnClickListener {
-            startActivity(home)
+        var datasex : String
+        if (sex.selectedItem == "여성"){
+            datasex = "FEMALE"
+        } else if (sex.selectedItem == "남성"){
+            datasex = "MALE"
+        } else {
+            datasex = "OTHER"
         }
 
+        signup.setOnClickListener {
+            val request = UserRequest(userId.text.toString(), password.text.toString(), username.text.toString(),
+                birthYear.text.toString(), birthMonth.selectedItem.toString(), birthDay.text.toString(),
+                datasex, phone.text.toString(), email.text.toString())
+
+            lifecycleScope.launch {
+                try {
+                    val result = apiService.sendUser(request)
+                    Log.d("MainActivity", "성공: $result")
+                    // 서버 성공
+                    home.putExtra("userId", userId.text.toString())
+                    startActivity(home)
+                } catch (e: Exception) {
+                    Log.e("MainActivity", "통신 에러", e)
+                }
+            }
+        }
+
+    }
+
+    fun sendDataToServer(request: UserRequest) {
+        lifecycleScope.launch {
+            try {
+                val result = apiService.sendUser(request)
+                Log.d("MainActivity", "성공: $result")
+            } catch (e: Exception) {
+                Log.e("MainActivity", "통신 에러", e)
+            }
+        }
     }
 
 
