@@ -19,6 +19,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState : Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        val profile = Intent(this, ProfileActivity::class.java)
+        val userId = intent.getStringExtra("userId")
+        println("유저 아이디: $userId")
 
         dl_main = findViewById<DrawerLayout>(R.id.dl_main)
 
@@ -42,7 +45,8 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.menu_setting -> {
                     // 설정 페이지 이동
-                    startActivity(Intent(this, ProfileActivity::class.java))
+                    profile.putExtra("userId", userId)
+                    startActivity(profile)
                 }
             }
 
